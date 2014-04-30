@@ -35,7 +35,7 @@ print strftime("%Y-%m-%d-%H:%M:%S") + ": Mysqldump started"
 #Enter your Live and staging dbhost,databasename 
 os.system("mysqldump -h live-dbhostname --no-data live_database_name | mysql -h staging-dbhostname  staging_database_name")
 #If you want ignore any tables from live when you take the dump to staging
-os.system("mysqldump -h live-dbhostname --single-transaction --ignore-table=live-table-name1 --ignore-table=live-table-name2  live_database_name | mysql -h staging-dbhostname staging_databse_name")
+os.system("mysqldump -h live-dbhostname --single-transaction --ignore-table=live_database.live-table-name1 --ignore-table=live_database.live-table-name2  live_database_name | mysql -h staging-dbhostname staging_databse_name")
 #If you want to sanitize
 os.system("mysql -h staging-dbhostname staging_databse_name < /home/vishnu/live-database-sanitizer.sql")
 print strftime("%Y-%m-%d-%H-%M-%S") + ": Mysqldump finished"
